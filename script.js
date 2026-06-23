@@ -86,6 +86,7 @@ function checkAnswer(selectedArticle) {
 }
 
 
+
 function getLogic(word) {
   const noun = word.noun.toLowerCase();
 
@@ -96,7 +97,6 @@ function getLogic(word) {
     { ending: "schaft", article: "die", gender: "feminine" },
     { ending: "tion", article: "die", gender: "feminine" },
     { ending: "ur", article: "die", gender: "feminine" },
-    { ending: "e", article: "die", gender: "feminine" },
 
     { ending: "chen", article: "das", gender: "neuter" },
     { ending: "lein", article: "das", gender: "neuter" },
@@ -110,11 +110,15 @@ function getLogic(word) {
 
   const matchedRule = endingRules.find(rule => noun.endsWith(rule.ending));
 
-  if (matchedRule) {
-    return `Words ending with -${matchedRule.ending} are usually ${matchedRule.gender}: ${matchedRule.article}.`;
+  if (!matchedRule) {
+    return "No simple reliable ending rule. Best to memorize this article.";
   }
 
-  return "No simple ending rule. This word should mainly be memorized.";
+  if (matchedRule.article === word.article) {
+    return `Nouns ending with -${matchedRule.ending} are usually ${matchedRule.gender}.`;
+  }
+
+  return `This word is an exception. Even though many words ending with -${matchedRule.ending} are ${matchedRule.gender}, this one is ${word.article}.`;
 }
 
 function buildGroups() {
