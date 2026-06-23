@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NounSense</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="game-container">
+    <div class="top-section">
+      <h1>🎯 NounSense</h1>
+      <p class="subtitle">Guess the German article. Learn the pattern.</p>
+    </div>
+
+    <div class="mode-buttons">
+      <button onclick="setMode('practice')">Practice Mode</button>
+      <button onclick="setMode('group')">Pattern Mode</button>
+    </div>
+
+    <div id="practiceMode">
+      <div class="score-box">
+        ⭐ Score: <span id="score">0</span>
+      </div>
+
+      <div class="card">
+        <p class="label">Choose the article for:</p>
+
+        <h2 id="noun">Prüfung</h2>
+
+        <div class="buttons">
+          <button class="article-btn der" onclick="checkAnswer('der')">
+            der
+            <span>masculine</span>
+          </button>
+
+          <button class="article-btn die" onclick="checkAnswer('die')">
+            die
+            <span>feminine</span>
+          </button>
+
+          <button class="article-btn das" onclick="checkAnswer('das')">
+            das
+            <span>neuter</span>
+          </button>
+        </div>
+
+        <p id="result"></p>
+
+        <div class="info-box">
+          <p id="meaning"></p>
+          <p id="rule"></p>
+        </div>
+
+        <button id="nextBtn" onclick="nextWord()">Next Word →</button>
+      </div>
+    </div>
+
+    <div id="groupMode" class="hidden">
+      <div class="card">
+        <h2>🧩 Pattern Mode</h2>
+        <p class="label">Groups of nouns with the same article and similar ending</p>
+
+        <div id="groupTitle"></div>
+        <div id="groupWords"></div>
+
+        <button id="nextBtn" onclick="nextGroup()">Next Group →</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="words.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
