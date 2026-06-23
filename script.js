@@ -87,6 +87,7 @@ function checkAnswer(selectedArticle) {
 
 
 
+
 function getLogic(word) {
   const noun = word.noun.toLowerCase();
 
@@ -118,7 +119,7 @@ function getLogic(word) {
     return `Nouns ending with -${matchedRule.ending} are usually ${matchedRule.gender}.`;
   }
 
-  return `This word is an exception. Even though many words ending with -${matchedRule.ending} are ${matchedRule.gender}, this one is ${word.article}.`;
+  return `This word is an exception. Even though many nouns ending with -${matchedRule.ending} are usually ${matchedRule.gender}, this word is ${word.article}.`;
 }
 
 function buildGroups() {
