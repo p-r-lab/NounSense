@@ -1,5 +1,6 @@
 let currentWord;
 let score = 0;
+let total = 0;
 let usedWords = [];
 
 const endings = [
@@ -64,8 +65,10 @@ function checkAnswer(selectedArticle) {
 
   result.className = "";
 
-  if (selectedArticle === currentWord.article) {
-    score++;
+  total++;
+
+    if (selectedArticle === currentWord.article) {
+        score++;
     result.textContent = "✅ Correct!";
     result.classList.add("correct");
   } else {
@@ -73,7 +76,7 @@ function checkAnswer(selectedArticle) {
     result.classList.add("wrong");
   }
 
-  document.getElementById("score").textContent = score;
+  document.getElementById("score").textContent = `${score}/${total}`;
 
   meaning.textContent = `Meaning: ${currentWord.meaning || "No meaning available"}`;
 
@@ -82,7 +85,13 @@ function checkAnswer(selectedArticle) {
   }
 
   
-  rule.textContent = `Article logic: ${getLogic(currentWord)}`;
+  const logic = getLogic(currentWord);
+
+    if (logic) {
+        rule.textContent = `Article logic: ${logic}`;
+    } else {
+        rule.textContent = "";
+    }
 }
 
 
