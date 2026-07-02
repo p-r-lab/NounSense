@@ -120,9 +120,7 @@ function getLogic(word) {
 
   const matchedRule = endingRules.find(rule => noun.endsWith(rule.ending));
 
-  if (!matchedRule) {
-    return "No simple reliable ending rule. Best to memorize this article.";
-  }
+  if (!matchedRule) { return ""; }
 
   if (matchedRule.article === word.article) {
     return `Nouns ending with -${matchedRule.ending} are usually ${matchedRule.gender}.`;
